@@ -21,4 +21,14 @@ public class Bevanda extends VoceMenu {
     public Long getId() {
         return id;
     }
+
+    @Override
+    public String toString() {
+        return "Bevanda{" +
+                "id=" + id +
+                ", nome='" + nome + '\'' +
+                ", prezzo=" + prezzo +
+                ", calorie=" + calorie +
+                '}';
+    }
 }

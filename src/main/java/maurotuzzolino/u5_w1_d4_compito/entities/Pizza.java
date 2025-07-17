@@ -34,4 +34,16 @@ public class Pizza extends VoceMenu {
         this.calorie += t.getCalorie();
         this.prezzo += t.getPrezzo();
     }
+
+    @Override
+    public String toString() {
+        return "Pizza{" +
+                "id=" + id +
+                ", nome='" + nome + '\'' +
+                ", prezzo=" + prezzo +
+                ", calorie=" + calorie +
+                '}';
+    }
+
+
 }

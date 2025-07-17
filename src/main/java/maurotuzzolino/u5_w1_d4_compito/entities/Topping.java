@@ -51,4 +51,14 @@ public class Topping {
     public void setCalorie(int calorie) {
         this.calorie = calorie;
     }
+
+    @Override
+    public String toString() {
+        return "Topping{" +
+                "id=" + id +
+                ", nome='" + nome + '\'' +
+                ", prezzo=" + prezzo +
+                ", calorie=" + calorie +
+                '}';
+    }
 }
