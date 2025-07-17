@@ -1,13 +1,13 @@
 package maurotuzzolino.u5_w1_d4_compito.runners;
 
-import maurotuzzolino.u5_w1_d4_compito.entities.Bevanda;
 import maurotuzzolino.u5_w1_d4_compito.entities.Pizza;
-import maurotuzzolino.u5_w1_d4_compito.entities.Topping;
 import maurotuzzolino.u5_w1_d4_compito.services.BevandaService;
 import maurotuzzolino.u5_w1_d4_compito.services.PizzaService;
 import maurotuzzolino.u5_w1_d4_compito.services.ToppingService;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
+
+import java.util.List;
 
 @Component
 public class DataLoader implements CommandLineRunner {
@@ -24,39 +24,49 @@ public class DataLoader implements CommandLineRunner {
 
     @Override
     public void run(String... args) {
-        // Creazione topping
-        Topping mozzarella = new Topping("Mozzarella", 1.00, 120);
-        Topping prosciutto = new Topping("Prosciutto", 1.50, 150);
+//        // Creazione topping
+//        Topping mozzarella = new Topping("Mozzarella", 1.00, 120);
+//        Topping prosciutto = new Topping("Prosciutto", 1.50, 150);
+//
+//        toppingService.save(mozzarella);
+//        toppingService.save(prosciutto);
+//
+//        // Creazione pizza e aggiunta topping
+//        Pizza margherita = new Pizza("Margherita");
+//        margherita.aggiungiTopping(mozzarella);
+//
+//        Pizza hawaiian = new Pizza("Hawaiian");
+//        hawaiian.aggiungiTopping(mozzarella);
+//        hawaiian.aggiungiTopping(prosciutto);
+//
+//        pizzaService.save(margherita);
+//        pizzaService.save(hawaiian);
+//
+//        // Creazione bevande
+//        Bevanda acqua = new Bevanda("Acqua", 1.00, 0);
+//        Bevanda cola = new Bevanda("Cola", 2.00, 150);
+//
+//        bevandaService.save(acqua);
+//        bevandaService.save(cola);
+//
+//        // Stampa dei dati persistiti
+//        System.out.println("=== PIZZE ===");
+//        pizzaService.getAll().forEach(System.out::println);
+//
+//        System.out.println("=== BEVANDE ===");
+//        bevandaService.findAll().forEach(System.out::println);
+//
+//        System.out.println("=== TOPPINGS ===");
+//        toppingService.findAll().forEach(System.out::println);
 
-        toppingService.save(mozzarella);
-        toppingService.save(prosciutto);
 
-        // Creazione pizza e aggiunta topping
-        Pizza margherita = new Pizza("Margherita");
-        margherita.aggiungiTopping(mozzarella);
+        System.out.println("=== PIZZE CHE CONTENGONO 'diavola' ===");
+        List<Pizza> pizzeDiavola = pizzaService.searchByKeyword("diavola");
+        pizzeDiavola.forEach(System.out::println);
 
-        Pizza hawaiian = new Pizza("Hawaiian");
-        hawaiian.aggiungiTopping(mozzarella);
-        hawaiian.aggiungiTopping(prosciutto);
+        System.out.println("\n=== PIZZE CON PREZZO BASE > 6.0 ===");
+        List<Pizza> pizzeCostose = pizzaService.findWithPrezzoBaseMaggioreDi(6.0);
+        pizzeCostose.forEach(System.out::println);
 
-        pizzaService.save(margherita);
-        pizzaService.save(hawaiian);
-
-        // Creazione bevande
-        Bevanda acqua = new Bevanda("Acqua", 1.00, 0);
-        Bevanda cola = new Bevanda("Cola", 2.00, 150);
-        
-        bevandaService.save(acqua);
-        bevandaService.save(cola);
-
-        // Stampa dei dati persistiti
-        System.out.println("=== PIZZE ===");
-        pizzaService.getAll().forEach(System.out::println);
-
-        System.out.println("=== BEVANDE ===");
-        bevandaService.findAll().forEach(System.out::println);
-
-        System.out.println("=== TOPPINGS ===");
-        toppingService.findAll().forEach(System.out::println);
     }
 }

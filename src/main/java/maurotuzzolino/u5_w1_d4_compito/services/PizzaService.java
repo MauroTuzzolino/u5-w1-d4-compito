@@ -27,4 +27,12 @@ public class PizzaService {
     public void delete(Long id) {
         pizzaRepository.deleteById(id);
     }
+
+    public List<Pizza> searchByKeyword(String keyword) {
+        return pizzaRepository.findByNomeContainingIgnoreCase(keyword);
+    }
+
+    public List<Pizza> findWithPrezzoBaseMaggioreDi(double prezzoMinimo) {
+        return pizzaRepository.findPizzeConPrezzoBaseMaggioreDi(prezzoMinimo);
+    }
 }
